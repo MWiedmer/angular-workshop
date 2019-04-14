@@ -1,0 +1,115 @@
+<header class="page-header row justify-center">
+  <div class="col">
+    <h1 class="float-left text-center text-md-left">
+      Flight Search
+    </h1>
+  </div>
+</header>
+
+<section class="row">
+  <div class="col-sm-12">
+    <section class="row">
+
+      <div class="col-md-12">
+
+        <div class="card mb-4">
+          <app-basket [selectedFlightIds]="selectedFlightIds">
+            Basket
+            <button class="btn btn-danger btn-md" id="btn-todo" (click)="clearBasket()">
+              <em class="fa fa-2x fa-trash"></em>
+            </button>
+          </app-basket>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+
+        <div class="card mb-4">
+
+          <div class="card-body">
+            <h3 class="card-title">Flight Search</h3>
+
+
+            <div class="form-group row">
+              <label for="from" class="col-2 col-form-label">From:</label>
+              <div class="col-10">
+                <input id="from" class="form-control" type="text"
+                       [(ngModel)]="from">
+                {{from}}
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="to" class="col-2 col-form-label">To:</label>
+              <div class="col-10">
+                <input id="to" class="form-control" type="text"
+                       [(ngModel)]="to">
+                {{to}}
+              </div>
+            </div>
+
+            <button type="button" class="btn btn-outline-secondary">
+              Search
+            </button>
+          </div>
+        </div>
+
+        <div class="card mb-4">
+          <div class="card-body">
+            <h3 class="card-title">Upcoming Flights</h3>
+
+            <div class="dropdown card-title-btn-container">
+              <button class="btn btn-sm btn-subtle" type="button">
+                <em class="fa fa-list-ul"></em> View All
+              </button>
+
+              <button class="btn btn-sm btn-subtle dropdown-toggle" type="button">
+                <em class="fa fa-cog"></em>
+              </button>
+            </div>
+
+
+            <div class="table-responsive">
+              <app-flight-card *ngFor="let f of flights" [flight]="f" [selected]="selectedFlightIds[f.id]"
+                               (selectedChange)="selectFlight($event)"></app-flight-card>
+              <!--<table class="table table-striped">
+                <thead>
+                <tr>
+                  <th>Id #</th>
+
+                  <th>From</th>
+
+                  <th>To</th>
+
+                  <th>Date</th>
+
+                  <th>Action</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr *ngFor="let f of flights" [ngClass]="{
+                                  'table-success': selectedFlightIds [f.id]
+                                }">
+                  <td>{{f.id}}</td>
+
+                  <td>{{f.from}}</td>
+
+                  <td>{{f.to}}</td>
+
+                  <td>{{f.date | date: "dd.MM.yyyy"}}</td>
+
+                  <td>
+                    <button class="btn" (click)="selectFlight(f.id)">SELECT</button>
+                  </td>
+                </tr>
+                </tbody>
+              </table>-->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </div>
+</section>

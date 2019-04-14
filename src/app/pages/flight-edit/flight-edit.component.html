@@ -1,0 +1,43 @@
+<p>ID: {{flight?.id}}</p>
+<pre>
+    {{flight | json}}
+  </pre>
+<form [formGroup]="flightEditForm">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="from">From:</label>
+      <input class="form-control" id="from" name="from" formControlName="from" type="text"/>
+     <!-- <p *ngIf="flightEditForm.get('from').hasError('required') && flightEditForm.get('from').touched"
+         class="alert alert-danger" role="alert">
+        Pflichtfeld!
+      </p>-->
+
+      <!--<div *ngIf="flightEditForm.get('from').hasError('validList') && flightEditForm.get('from').touched"
+           class="alert alert-danger">
+        Ungültiger Planet
+        <b>{{flightEditForm.get('from').getError('validList').actualValue}}</b>
+        Erlaubte Planeten:
+        <ul>
+          <li *ngFor="let planet of flightEditForm.get('from').getError('validList').acceptableValues">
+            {{planet}}
+          </li>
+        </ul>
+      </div>-->
+    </div>
+    <!--<app-form-control-state [control]="flightEditForm.get('from')">Form Control:</app-form-control-state>-->
+
+    <div class="form-group col-md-6">
+      <label for="to">To:</label>
+      <input class="form-control" id="to" name="to" formControlName="to" type="text"/>
+      <!--<app-error-message class="alert alert-danger" role="alert" [errors]="flightEditForm.get('to').errors"></app-error-message>-->
+    </div>
+    <p *ngIf="flightEditForm.hasError('isEqual') && flightEditForm.touched"
+       class="alert alert-danger" role="alert">
+      Not Equal!
+    </p>
+    <div class="form-group">
+      <label for="date">Datum:</label>
+      <input class="form-control" id="date" name="date" formControlName="date" type="date"/>
+    </div>
+  </div>
+</form>

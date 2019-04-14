@@ -1,0 +1,10 @@
+<div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+  <div class="card-body text-dark">
+    <h5 class="card-header">{{flight.from}} - {{flight.to}}</h5>
+    <h6 class="card-title">{{flight.date | date: "dd.MM.yyyy"}}</h6>
+    <p class="card-text">Id: {{flight.id}}</p>
+    <p class="card-text">Delayed: {{flight.delayed}}</p>
+    <button class="card-link" (click) = toggleSelected()>{{!selected ? 'Select' : 'Deselect'}}</button>
+    <button class="card-link" (click) = navigateToFlightEdit()>Edit</button>
+  </div>
+</div>

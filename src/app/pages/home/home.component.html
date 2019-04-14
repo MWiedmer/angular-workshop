@@ -1,0 +1,9 @@
+<div class="row">
+
+  <div class="col">
+    Home works!
+    <span>{{getIsLoggedIn()}}</span>
+    <button type="button" class="btn btn-outline-secondary" *ngIf="!getIsLoggedIn()" (click)="login()">Login</button>
+    <button type="button" class="btn btn-outline-secondary" *ngIf="getIsLoggedIn()" (click)="logout()">Logout</button>
+  </div>
+</div>
